@@ -3,538 +3,511 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✦ Premium Font Generator - Teks Estetik & Keren ✦</title>
+    <title>Premium Font Generator</title>
     <style>
         :root {
-            --primary: #ff7675;
-            --secondary: #6c5ce7;
-            --dark: #1e272e;
-            --card-bg: #2f3542;
-            --light: #f1f2f6;
-            --success: #2ed573;
-            --accent: #00cec9;
+            --bg-utama: #0d1117;
+            --bg-kartu: #161b22;
+            --teks-utama: #c9d1d9;
+            --teks-sekunder: #8b949e;
+            --aksen: #58a6ff;
+            --aksen-hover: #1f6feb;
+            --sukses: #2ea44f;
+            --border: #30363d;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: '-apple-system', BlinkMacSystemFont, sans-serif;
         }
 
         body {
-            background: #11141a;
-            color: var(--light);
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding-bottom: 80px; /* Jarak ekstra agar konten tidak tertutup iklan melayang */
-        }
-
-        .app-card {
-            width: 100%;
-            max-width: 480px;
-            background: #1a1e29;
-            border: 1px solid #2d3446;
-            border-radius: 24px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-utama);
+            color: var(--teks-utama);
+            line-height: 1.5;
             padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding-bottom: 80px;
         }
 
-        .header {
+        .kartu-aplikasi {
+            background-color: var(--bg-kartu);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 25px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .deskripsi {
+            font-size: 12px;
+            color: var(--teks-sekunder);
             text-align: center;
             margin-bottom: 20px;
-        }
-
-        .header h1 {
-            font-size: 22px;
-            font-weight: 900;
-            background: linear-gradient(45deg, #00cec9, #6c5ce7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 4px;
-        }
-
-        .header p {
-            font-size: 11px;
-            color: #57606f;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* LAYOUT IKLAN UMUM */
-        .ad-banner-top, .ad-banner-middle, .ad-banner-inline {
-            width: 100%;
-            background: #222736;
-            border: 1px dashed #3e445b;
-            border-radius: 12px;
-            padding: 12px;
-            text-align: center;
-            font-size: 11px;
-            color: #747d8c;
+        .pembungkus-input {
             margin-bottom: 20px;
         }
 
-        .ad-banner-inline {
-            margin: 10px 0;
-            background: #1c2130;
-        }
-
-        /* IKLAN MELAYANG BARU (STICKY BOTTOM) */
-        .ad-sticky-bottom {
-            position: fixed;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 480px;
-            background: #1e2432;
-            border-top: 2px solid var(--accent);
-            padding: 10px;
-            text-align: center;
-            font-size: 11px;
-            color: #a4b0be;
-            z-index: 9999;
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
-        }
-
-        .input-box-wrapper {
-            margin-bottom: 20px;
-        }
-
-        .input-box-wrapper label {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--accent);
+        label {
             display: block;
-            margin-bottom: 6px;
-            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--aksen);
         }
 
         input[type="text"] {
             width: 100%;
             padding: 14px;
-            font-size: 16px;
-            border: 2px solid #2d3446;
+            background-color: var(--bg-utama);
+            border: 2px solid var(--border);
             border-radius: 12px;
-            outline: none;
-            background: #0f121a;
             color: #fff;
-            font-weight: 600;
-            transition: all 0.3s;
-            caret-color: var(--accent);
+            font-size: 16px;
+            transition: all 0.3s ease;
         }
 
         input[type="text"]:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 12px rgba(0, 206, 201, 0.2);
+            outline: none;
+            border-color: var(--aksen);
+            box-shadow: 0 0 0 3px rgba(88,166,255,0.15);
         }
 
-        input[type="text"]::placeholder {
-            color: rgba(255, 255, 255, 0.25);
-            font-weight: 500;
+        .judul-pratinjau {
+            font-size: 13px;
+            color: var(--teks-sekunder);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        /* LIVE PREVIEW MULTIPLATFORM ALAMI */
-        .preview-title {
-            font-size: 11px;
-            font-weight: bold;
-            color: #a4b0be;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .comparison-container {
+        .wadah-perbandingan {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 25px;
         }
 
-        .profile-mockup {
-            background: linear-gradient(135deg, #2c3e50, #000000);
+        .mockup-profil {
+            background: linear-gradient(145deg, #1f242c, #161b22);
+            border: 1px solid var(--border);
             border-radius: 14px;
-            padding: 14px;
-            position: relative;
-            border: 1px solid #34495e;
-            overflow: hidden;
+            padding: 15px;
         }
 
-        .profile-mockup.before::after {
-            content: '❌ TEKS BIASA';
-            position: absolute;
-            top: 0; right: 0;
-            background: #ff5252;
-            font-size: 9px; font-weight: bold;
-            padding: 4px 8px; border-bottom-left-radius: 8px;
-        }
-
-        .profile-mockup.after {
-            background: linear-gradient(135deg, #1e1b4b, #000000);
-            border: 1px solid #4338ca;
-        }
-
-        .profile-mockup.after::after {
-            content: '🔥 HASIL ESTETIK';
-            position: absolute;
-            top: 0; right: 0;
-            background: #2ed573;
-            font-size: 9px; font-weight: bold;
-            padding: 4px 8px; border-bottom-left-radius: 8px;
-        }
-
-        .profile-row {
+        .baris-profil {
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .avatar-circle {
-            width: 42px;
-            height: 42px;
-            background: #6c5ce7;
+        .avatar {
+            width: 40px;
+            height: 40px;
+            background-color: var(--border);
             border-radius: 50%;
             display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 18px;
+            align-items: center;
+            font-size: 20px;
         }
 
-        .profile-info {
+        .info-profil {
             display: flex;
             flex-direction: column;
-            gap: 3px;
+            gap: 2px;
+            flex: 1;
+            overflow: hidden;
         }
 
-        .display-name {
-            font-size: 16px;
-            font-weight: bold;
-            color: #ffffff;
+        .nama-tampilan {
+            font-weight: 600;
+            font-size: 15px;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .sub-status {
-            font-size: 11px;
-            color: #747d8c;
-        }
-
-        .section-title {
             font-size: 12px;
-            font-weight: bold;
-            color: var(--accent);
-            margin-bottom: 12px;
-            text-transform: uppercase;
+            color: var(--teks-sekunder);
         }
 
-        .font-list {
+        .tag-status {
+            align-self: flex-start;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 6px;
+            margin-bottom: 6px;
+            color: #fff;
+        }
+
+        .tag-biasa { background-color: #f25c54; }
+        .tag-estetik { background-color: var(--sukses); }
+
+        .judul-bagian {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--aksen);
+            margin: 20px 0 12px 0;
+        }
+
+        .daftar-font {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .font-card {
-            background: #1f2432;
-            border: 1px solid #2b3145;
-            padding: 12px 14px;
+        .kartu-font {
+            background-color: var(--bg-utama);
+            border: 1px solid var(--border);
             border-radius: 12px;
+            padding: 12px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 15px;
+            position: relative;
+            overflow: hidden;
         }
 
         .font-card.viral-tag {
-            border-color: var(--accent);
-            background: linear-gradient(90deg, #1f2432 0%, #152c2c 100%);
-            position: relative;
-        }
-
-        .font-card.viral-tag::before {
-            content: '⭐ TERPOPULER';
-            position: absolute;
-            top: -7px; left: 10px;
-            background: var(--accent);
-            color: #000;
-            font-size: 7px;
-            font-weight: 900;
-            padding: 1px 4px;
-            border-radius: 3px;
+            border-left: 4px solid #ffcc00;
         }
 
         .font-info {
             display: flex;
             flex-direction: column;
-            gap: 3px;
-            width: 75%;
+            gap: 4px;
+            flex: 1;
+            overflow: hidden;
         }
 
         .font-label {
-            font-size: 8px;
-            font-weight: bold;
-            color: #747d8c;
+            font-size: 11px;
+            color: var(--teks-sekunder);
+            font-style: italic;
         }
 
         .font-output {
-            font-size: 15px;
+            font-size: 16px;
             color: #fff;
-            word-break: break-all;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .btn-copy {
-            background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+            background-color: #6c5ce7;
             color: white;
             border: none;
-            padding: 8px 14px;
-            font-size: 12px;
-            font-weight: bold;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 600;
             border-radius: 8px;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3);
+            transition: background 0.2s;
         }
 
-        .btn-copy:active {
-            transform: scale(0.95);
+        .btn-copy:hover {
+            background-color: #5b4cc4;
         }
 
-        .share-container {
-            margin-top: 20px;
+        .wadah-berbagi {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
             text-align: center;
-            background: #11141a;
-            border: 1px solid #2d3446;
-            padding: 14px;
-            border-radius: 14px;
         }
 
-        .share-container p {
-            font-size: 11px;
-            color: #a4b0be;
-            margin-bottom: 8px;
+        .wadah-berbagi p {
+            font-size: 13px;
+            color: var(--teks-sekunder);
+            margin-bottom: 12px;
         }
 
         .btn-whatsapp {
-            background: var(--success);
-            color: white;
-            text-decoration: none;
-            padding: 8px 16px;
-            font-size: 12px;
-            font-weight: bold;
-            border-radius: 20px;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            justify-content: center;
+            gap: 8px;
+            background-color: #25d366;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            width: 100%;
+            transition: background 0.2s;
         }
 
-        #hiddenClipboard { position: absolute; left: -9999px; top: -9999px; }
+        .btn-whatsapp:hover {
+            background-color: #20ba5a;
+        }
+
+        /* --- STYLING KHUSUS IKLAN AGAR PAS DI TENGAH LAYAR HP --- */
+        .ad-banner-top, .ad-inline-native, .ad-sticky-bottom {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .ad-banner-top { margin: 15px 0; }
+        .ad-inline-native { margin: 15px 0; }
+
+        .ad-sticky-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 9999;
+            background-color: rgba(13, 17, 23, 0.95);
+            padding: 5px 0;
+            border-top: 1px solid var(--border);
+        }
 
         .toast-notif {
             position: fixed;
-            bottom: 80px; /* Disesuaikan agar muncul di atas iklan melayang */
-            background: var(--accent);
-            color: #000;
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            display: none;
-            z-index: 99999;
-            box-shadow: 0 5px 15px rgba(0,206,201,0.4);
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: var(--sukses);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10000;
+            opacity: 0;
+        }
+
+        .toast-notif.tampilkan {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
         }
     </style>
 </head>
 <body>
 
-    <div class="app-card">
-        <div class="header">
-            <h1>✦ Premium Font Generator ✦</h1>
-            <p>Salin Teks Keren untuk Bio Sosmed, Chat, & Nickname Game</p>
+    <div class="kartu-aplikasi">
+        <h1>✨ Premium Font Generator ✨</h1>
+        <p class="deskripsi">Salin Teks Keren untuk Bio Sosmed, Chat, & Nickname Game</p>
+
+        <!-- ==================== 1. SLOT IKLAN ATAS (320x50) ==================== -->
+        <div class="ad-banner-top">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '6da0ffbd43133b69a8348ae591fc0af6',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/6da0ffbd43133b69a8348ae591fc0af6/invoke.js"></script>
         </div>
 
-        <div class="ad-banner-top" style="text-align: center; display: flex; justify-content: center; align-items: center; width: 100%; overflow: hidden; margin: 10px 0;">
-            <script>
-  atOptions = {
-    'key' : '0a50c6b4a284126e883441388abba324',
-    'format' : 'iframe',
-    'height' : 60,
-    'width' : 468,
-    'params' : {}
-  };
-</script>
-<script src="https://www.highperformanceformat.com/0a50c6b4a284126e883441388abba324/invoke.js"></script>
+        <div class="pembungkus-input">
+            <label for="teks-masukan">MASUKKAN KATA ATAU NAMA:</label>
+            <input type="text" id="teks-masukan" placeholder="Ketik kata atau nama di sini..." autofocus>
         </div>
 
-        <div class="input-box-wrapper">
-            <label for="inputText">Masukkan Kata atau Nama:</label>
-            <input type="text" id="inputText" placeholder="Ketik kata atau nama di sini..." autofocus>
-        </div>
-
-        <span class="preview-title">👁️ Live Preview Tampilan:</span>
-        <div class="comparison-container">
-            <div class="profile-mockup before">
-                <div class="profile-row">
-                    <div class="avatar-circle" style="background:#57606f;">✨</div>
-                    <div class="profile-info">
-                        <div class="display-name" id="previewBefore" style="color: #a4b0be;">...</div>
+        <div class="judul-pratinjau">👁️ Live Preview Tampilan:</div>
+        <div class="wadah-perbandingan">
+            <div class="mockup-profil">
+                <span class="tag-status tag-biasa">❌ TEKS BIASA</span>
+                <div class="baris-profil">
+                    <div class="avatar">✨</div>
+                    <div class="info-profil">
+                        <div class="nama-tampilan" id="pratinjauSebelumnya">...</div>
                         <div class="sub-status">Format Teks Standar</div>
                     </div>
                 </div>
             </div>
 
-            <div class="profile-mockup after">
-                <div class="profile-row">
-                    <div class="avatar-circle">👑</div>
-                    <div class="profile-info">
-                        <div class="display-name" id="previewAfter" style="color:var(--accent);">Loading...</div>
-                        <div class="sub-status" style="color:#a4b0be;">Siap Copas ke WA, IG, TikTok & Game</div>
+            <div class="mockup-profil">
+                <span class="tag-status tag-estetik">🔥 HASIL ESTETIK</span>
+                <div class="baris-profil">
+                    <div class="avatar">👑</div>
+                    <div class="info-profil">
+                        <div class="nama-tampilan" id="pratinjauSetelahnya">Loading...</div>
+                        <div class="sub-status">Siap Copas ke WA, IG, TikTok & Game</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="ad-inline-native" style="text-align: center; display: flex; justify-content: center; width: 100%; margin: 15px 0;">
-    <script type="text/javascript">
-	atOptions = {
-		'key' : '9dd8c01288ff5b169527ec6dc91456db',
-		'format' : 'iframe',
-		'height' : 250,
-		'width' : 300,
-		'params' : {}
-	};
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/9dd8c01288ff5b169527ec6dc91456db/invoke.js"></script>
+        <!-- ==================== 2. SLOT IKLAN TENGAH (NATIVE BANNER 300x250) ==================== -->
+        <div class="ad-inline-native">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '9dd8c01288ff5b169527ec6dc91456db',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/9dd8c01288ff5b169527ec6dc91456db/invoke.js"></script>
         </div>
-        
 
-        <div class="section-title">🔥 Pilihan Font Gaya Premium (Sekali Klik):</div>
-        
-        < div  class = "font-list"  id = "fontList" >
-            </ div >
+        <div class="judul-bagian">🔥 PILIHAN FONT GAYA PREMIUM (SEKALI KLIK):</div>
+        <div class="daftar-font" id="fontList"></div>
 
-        < div  class = "share-container" >
-            < p > Bikin profil teman-temanmu jadi makin estetik? Bagikan web ini! </p>​​
-            < a  href = "#"  id = "shareWA"  class = "btn-whatsapp"  target = "_blank" > 🟢 Bagikan ke WhatsApp </ a >
-        </ div >
-    </ div >
+        <div class="wadah-berbagi">
+            <p>Bikin profil teman-temanmu jadi makin estetik? Bagikan web ini!</p>
+            <a href="#" id="shareWA" class="btn-whatsapp" target="_blank">🟢 Bagikan ke WhatsApp</a>
+        </div>
+    </div>
 
-    < div  class = "ad-sticky-bottom" >
-        
-            <script>​​
-  atOptions = {
-    'key' : '6da0fbd43133b69a8340ae591fc0aaf6',
-    'format' : 'iframe',
-    'height' : 50,
-    'width' : 320,
-    'params' : {}
-  };
-</script>​​
-< script  src = " https://www.highperformanceformat.com/6da0fbd43133b69a8340ae591fc0aaf6/invoke.js " > </script>
-    
-    </ div >
+    <!-- ==================== 3. SLOT IKLAN BAWAH MELAYANG (STICKY BOTTOM 320x50) ==================== -->
+    <div class="ad-sticky-bottom">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '6da0ffbd43133b69a8348ae591fc0af6',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/6da0ffbd43133b69a8348ae591fc0af6/invoke.js"></script>
+    </div>
 
-    < textarea  id = " hiddenClipboard " > </textarea>
-    < div  class = "toast-notif"  id = "toast" > ✅ Teks Estetik Berhasil Disalin! </div>​​
+    <textarea id="hiddenClipboard" style="position: absolute; left: -9999px;"></textarea>
+    <div class="toast-notif" id="toast">✅ Teks Estetik Berhasil Disalin!</div>
 
-    <script>​​
-        const inputText = document.getElementById('inputText');
+    <!-- ==================== BAGIAN SCRIPT ENGINE GENERATOR ==================== -->
+    <script>
+        const teksMasukan = document.getElementById('teks-masukan');
         const fontList = document.getElementById('fontList');
-        const previewBefore = document.getElementById('previewBefore');
-        const previewAfter = document.getElementById('previewAfter');
+        const pratinjauSebelumnya = document.getElementById('pratinjauSebelumnya');
+        const pratinjauSetelahnya = document.getElementById('pratinjauSetelahnya');
         const shareWA = document.getElementById('shareWA');
         const toast = document.getElementById('toast');
         const hiddenClipboard = document.getElementById('hiddenClipboard');
 
-        const alphabetMaps = {
-            bubble: { 'A': 'Ⓐ', 'B': 'Ⓑ', 'C': 'Ⓒ', 'D': 'Ⓓ', 'E': 'Ⓔ', 'F': 'Ⓕ', 'G': 'Ⓖ', 'H': 'Ⓗ', 'I': 'Ⓘ', 'J': 'Ⓙ', 'K': 'Ⓚ', 'L': 'Ⓛ', 'M': 'Ⓜ', 'N': 'Ⓝ', 'O': 'Ⓞ', 'P': 'Ⓟ', 'Q': 'Ⓠ', 'R': 'Ⓡ', 'S': 'Ⓢ', 'T': 'Ⓣ', 'U': 'Ⓤ', 'V': 'Ⓥ', 'W': 'Ⓦ', 'X': 'Ⓧ', 'Y': 'Ⓨ', 'Z': 'Ⓩ', 'a': 'ⓐ', 'b': 'ⓑ', 'c'
-            Jepang: { 'A': 'Ａ', 'B': 'Ｂ', 'C': 'Ｃ', 'D': 'Ｄ', 'E': 'Ｅ', 'F': 'Ｆ', 'G': 'Ｇ', 'H': 'Ｈ', 'I': 'Ｉ', 'J': 'Ｊ', 'K': 'Ｋ', 'L': 'Ｌ', 'M': 'Ｍ', 'N': 'Ｎ', 'O': 'Ｏ', 'P': 'Ｐ', 'Q': 'Ｑ', 'R': 'Ｒ', 'S': 'Ｓ', 'T': 'Ｔ', 'U': 'Ｕ', 'V': 'Ｖ', 'W': 'Ｗ', 'X': 'Ｘ', 'Y': 'Y', 'Z': 'Z', 'a': 'a', 'b': 'b', 'c': 'k', 'd': 'd', 'e': 'e', ​​'f': 'f', 'g': 'h': 'h', 'i': 'i', 'j': 'j', 'k': 'k', 'l': 'l': 'm': 'm', 'n': 'n', 'o': 'o', 'p': 'k', 'q': 'v', 'r': 'r', 's': 's', 't': 't', 'u': 'u', 'v': 'w': 'ｗ', 'x': 'ｘ', 'y': 'ｙ', 'z': 'ｚ' },
-            sultan: { 'A': '𝔸', 'B': '𝔹', 'C': 'ℂ', 'D': '𝔻', 'E': '𝔼', 'F': '𝔽', 'G': '𝔾', 'H': 'ℍ', 'I': '𝕀', 'J': '𝕁', 'K': '𝕂', 'L': '𝕃', 'M': '𝕄', 'N': 'ℕ', 'O': '𝕆', 'P': 'ℙ', 'Q': 'ℚ', 'R': 'ℝ', 'S': '𝕊', 'T': '𝕋', 'U': '𝕌', 'V': '𝕍', 'W': '𝕎', 'X': '𝕏', 'Y': '𝕐', 'Z': 'ℤ', 'a': '𝕒', 'b': '𝕓', 'c': '𝕔', 'd': '𝕕', 'e': '𝕖', 'f': '𝕗', 'g': '𝕘', 'h': '𝕙', 'i': '𝕚', 'j': '𝕛', 'k': '𝕜', 'l': '𝕝', 'm': '𝕞', 'n': '𝕟', 'o': '𝕠', 'p': '𝕡', 'q': '𝕢', 'r': '𝕣', 's': '𝕤', 't': '𝕥', 'u': '𝕦', 'v': '𝕧', 'w': '𝕛', 'x': '𝕩', 'y': '𝕪', 'z': '𝕫' },
-            gotik: { 'A': '𝔄', 'B': '𝔅', 'C': '𝔍', 'D': '𝔇', 'E': '𝔈', 'F': '𝔉', 'G': '𝔊', 'H': 'cache', 'I': 'ℑ', 'J': '𝔍', 'K': '𝔎', 'L': '𝔏', 'M': '𝔐', 'N': '𝔝', 'O': '𝔒', 'P': '𝔓', 'Q': '𝔔', 'R': '𝔛', 'S': '𝔖', 'T': '𝔗', 'U': '𝔘', 'V': '𝔙', 'W': '𝔚', 'X': '𝔛', 'Y': '𝔜', 'Z': '𝔝', 'a': '𝔞', 'b': '𝔟', 'c': '𝔠', 'd': '𝔡', 'e': '𝔢', 'f': '𝔣', 'g': '𝔧', 'h': '𝔨', 'i': '𝔦', 'j': '𝔟', 'k': '𝔨', 'l': '𝔩', 'm': '𝔪', 'n': '𝔫', 'o': '𝔬', 'p': '𝔭', 'q': '𝔮', 'r': '𝔯', 's' : '𝔰', 't': '𝔱', 'u': '𝔲', 'v': '𝔳', 'w': '𝔴', 'x': '𝔵', 'y': '𝔶', 'z': '𝔷' },
-            Tulisan kursif: { 'A': '𝒜', 'B': 'ℬ', 'C': '𝒞', 'D': '𝒟', 'E': 'ℰ', 'F': 'ℱ', 'G': '𝒢', 'H': 'ℋ', 'I': 'ℐ', 'J': '𝒥', 'K': '𝒦', 'L': 'ℒ', 'M': 'ℳ', 'N': '𝒩', 'O': '𝒪', 'P': '𝒫', 'Q': '𝒬', 'R': 'ℛ', 'S': '𝒮', 'T': '𝒯', 'U': '𝒰', 'V': '𝒱', 'W': '𝒲', 'X': '𝒳', 'Y': '𝒴', 'Z': '𝒵', 'a': '𝒶', 'b': '𝒷', 'c': 'clr', 'd': '𝒹', 'e': '𝑒', 'f': '𝒻', 'g': '𝑔', 'h': '𝒽', 'i': '𝒾', 'j': '𝒿', ​​'k': '𝓀', 'l': '𝓁', 'm': '𝓂', 'n': '𝓃', 'o': 'diabaikan', 'p': '𝓅', 'q': '𝓆', 'r': '𝓇', 's': '𝓈', 't': 't', 'u': 'u', 'v': 'v', 'w': 'w', 'x': 'y', 'y': 'y', 'z': 'z' },
-            bolditalic: { 'A': '𝑨', 'B': '𝑩', 'C': '𝑪', 'D': '𝑫', 'E': '𝑬', 'F': '𝑭', 'G': '𝑮', 'H': '𝑯', 'I': '𝑰', 'J': '𝑱', 'K': '𝑲', 'L': '𝑳', 'M': '𝑴', 'N': '𝑵', 'O': '𝑶', 'P': '𝑷', 'Q': '𝑸', 'R': '𝑹', 'S': '𝑺', 'T': '𝑻', 'U': '𝑼', 'V': '𝑽', 'W': '𝑾', 'X': '𝑿', 'Y': '𝒀', 'Z': '𝒁', 'a': '𝒂', 'b': '𝒃', 'c': '𝒄', 'd': '𝒅', 'e': '𝒆', 'f': '𝒇', 'g': '𝒈', 'h': '𝒉', 'i': '𝒊', 'j': '𝒋', 'k': '𝒌', 'l': '𝒍', 'm': '𝒎', 'n': '𝒏', 'o': '𝒐', 'p': '𝒑', 'q': '𝒒', 'r': '𝒓', 's': '𝒔', 't': '𝒕', 'u': '𝒖', 'v': '𝒗', 'w': '𝒘', 'x': '𝒙', 'y': '𝒚', 'z': '𝒛' },
-            mono: { 'A': 'J', 'B': 'B', 'C': 'C', 'D': 'D', 'E': 'E', 'F': 'F', 'G': 'G', 'H': 'H', 'I': 'I', 'J': 'J', 'K': 'K', 'L': 'L', 'M': 'M', 'N': 'N', 'O': 'O', 'P': 'P', 'Q': 'Q', 'R': 'R', 'S': 'S', 'T': 'T', 'U': 'U', 'V': 'V', 'W': ' ڈ', 'X': '𝚇', 'Y': '𝚈', 'Z': '𝚉', 'a': '𝚓', 'b': '𝚋', 'c': '𝚌', 'd': '𝚍', 'e': '𝚎', 'f': 'init', 'g': '𝚐', 'h': '𝚑', 'i': '𝚒', 'j': '<b>', 'k': '𝚔', 'l': '𝚕', 'm': '𝚖', 'n': '𝚗', 'o': '𝚘', 'p': '𝚙', 'q': '𝚚', 'r': '𝚛', 's'<b>', 'k': '𝚔', 'l': '𝚕', 'm': '𝚖', 'n': '𝚗', 'o': '𝚘', 'p': '𝚙', 'q': '𝚚', 'r': '𝚛', 's': '𝚜', 't': '𝕥', 'u': '𝚞', 'v': '𝚟', 'w': '𝚠', 'x': '𝚡', 'y': '𝚢', 'z': '𝚣' },
-'X': 'X', 'Y': '⅄', 'Z': 'Z' }
+        const PetaAlfabet = {
+            gelembung: { 'A': 'Ⓐ', 'B': 'Ⓑ', 'C': 'Ⓒ', 'D': 'Ⓓ', 'E': 'Ⓔ', 'F': 'Ⓕ', 'G': 'Ⓖ', 'H': 'Ⓗ', 'I': 'Ⓘ', 'J': 'Ⓙ', 'K': 'Ⓚ', 'L': 'Ⓛ', 'M': 'Ⓜ', 'N': 'Ⓝ', 'O': 'Ⓞ', 'P': 'Ⓟ', 'Q': 'Ⓠ', 'R': 'Ⓡ', 'S': 'Ⓢ', 'T': 'Ⓣ', 'U': 'Ⓤ', 'V': 'Ⓥ', 'W': 'Ⓦ', 'X': 'Ⓧ', 'Y': 'Ⓨ', 'Z': 'Ⓩ', 'a': 'ⓐ', 'b': 'ⓑ', 'c': 'ⓒ', 'd': 'ⓓ', 'e': 'ⓔ', 'f': 'ⓕ', 'g': 'ⓖ', 'h': 'ⓗ', 'i': 'ⓘ', 'j': 'ⓙ', 'k': 'ⓚ', 'l': 'ⓛ', 'm': 'ⓜ', 'n': 'ⓝ', 'o': 'ⓞ', 'p': 'ⓟ', 'q': 'ⓠ', 'r': 'ⓡ', 's': 'ⓢ', 't': 'ⓣ', 'u': 'ⓤ', 'v': 'ⓥ', 'w': 'ⓦ', 'x': 'ⓧ', 'y': 'ⓨ', 'z': 'ⓩ' },
+            jepang: { 'A': '卂', 'B': '乃', 'C': '匚', 'D': '刀', 'E': '乇', 'F': '千', 'G': 'g', 'H': '卄', 'I': '丨', 'J': '丿', 'K': '长', 'L': 'L', 'M': '爪', 'N': '几', 'O': 'ㄖ', 'P': '卩', 'Q': 'Ҩ', 'R': '尺', 'S': '丂', 'T': 'ㄒ', 'U': 'ㄩ', 'V': 'ᐯ', 'W': '山', 'X': '乂', 'Y': 'ㄚ', 'Z': '乙', 'a': '卂', 'b': '乃', 'c': '匚', 'd': '刀', 'e': '乇', 'f': '千', 'g': 'g', 'h': '卄', 'i': '丨', 'j': '丿', 'k': '长', 'l': 'L', 'm': '爪', 'n': '几', 'o': 'ㄖ', 'p': '卩', 'q': 'Ҩ', 'r': '尺', 's': '丂', 't': 'ㄒ', 'u': 'ㄩ', 'v': 'ᐯ', 'w': '山', 'x': '乂', 'y': 'ㄚ', 'z': '乙' },
+            sultan: { 'A': 'A', 'B': 'B', 'C': 'C', 'D': 'D', 'E': 'E', 'F': 'F', 'G': 'G', 'H': 'H', 'I': 'I', 'J': 'J', 'K': 'K', 'L': 'L', 'M': 'M', 'N': 'N', 'O': 'O', 'P': 'P', 'Q': 'Q', 'R': 'R', 'S': 'S', 'T': 'T', 'U': 'U', 'V': 'V', 'W': 'W', 'X': 'X', 'Y': 'Y', 'Z': 'Z', 'a': 'a', 'b': 'b', 'c': 'c', 'd': 'd', 'e': 'e', 'f': 'f', 'g': 'g', 'h': 'h', 'i': 'i', 'j': 'j', 'k': 'k', 'l': 'l', 'm': 'm', 'n': 'n', 'o': 'o', 'p': 'p', 'q': 'q', 'r': 'r', 's': 's', 't': 't', 'u': 'u', 'v': 'v', 'w': 'w', 'x': 'x', 'y': 'y', 'z': 'z' },
+            goth: { 'A': '𝔄', 'B': '𝔅', 'C': 'ℭ', 'D': '𝔇', 'E': '𝔈', 'F': '𝔉', 'G': '𝔊', 'H': '𝔏', 'I': '𝔍', 'J': '𝔎', 'K': '𝔏', 'L': '𝔐', 'M': '𝔑', 'N': '𝔒', 'O': '𝔓', 'P': '𝔔', 'Q': '𝔖', 'R': '𝔗', 'S': '𝔘', 'T': '𝔙', 'U': '𝔚', 'V': '𝔛', 'W': '𝔜', 'X': '𝔝', 'Y': '𝔞', 'Z': '𝔟', 'a': '𝔡', 'b': '𝔢', 'c': '𝔣', 'd': '𝔤', 'e': '𝔥', 'f': '𝔦', 'g': '𝔨', 'h': '𝔩', 'i': '𝔪', 'j': '𝔫', 'k': '𝔬', 'l': '𝔭', 'm': '𝔮', 'n': '𝔯', 'o': '𝔰', 'p': '𝔱', 'q': '𝔲', 'r': '𝔳', 's': '𝔴', 't': '𝔵', 'u': '𝔶', 'v': '𝔷', 'w': '𝔷', 'x': '𝔷', 'y': '𝔷', 'z': '𝔷' },
+            italicbold: { 'A': ' getA', 'B': ' QiB', 'C': 'C', 'D': 'D', 'E': 'E', 'F': 'F', 'G': 'G', 'H': 'H', 'I': 'I', 'J': 'J', 'K': 'K', 'L': 'L', 'M': 'M', 'N': 'N', 'O': 'O', 'P': 'P', 'Q': 'Q', 'R': 'R', 'S': 'S', 'T': 'T', 'U': 'U', 'V': 'V', 'W': 'W', 'X': 'X', 'Y': 'Y', 'Z': 'Z', 'a': '𝙖', 'b': '𝙗', 'c': '𝙘', 'd': '𝙙', 'e': '𝙚', 'f': '𝙛', 'g': '𝙜', 'h': '𝙝', 'i': '𝙞', 'j': '𝙟', 'k': '𝙠', 'l': '𝙡', 'm': '𝙢', 'n': '𝙣', 'o': '𝙤', 'p': '𝙥', 'q': '𝙦', 'r': '𝙧', 's': '𝙨', 't': '𝙩', 'u': '𝙪', 'v': '𝙫', 'w': '𝙬', 'x': '𝙭', 'y': '𝙮', 'z': '𝙯' },
+            mono: { 'A': '𝙰', 'B': '𝙱', 'C': '𝙲', 'D': '𝙳', 'E': '𝙴', 'F': '𝙵', 'G': '𝙶', 'H': '𝙷', 'I': '𝙸', 'J': '𝙹', 'K': '𝙺', 'L': '𝙻', 'M': '𝙼', 'N': '𝙽', 'O': '𝙾', 'P': '𝙿', 'Q': '𝚀', 'R': '𝚁', 'S': '𝚂', 'T': '𝚃', 'U': '𝚄', 'V': '𝚅', 'W': '𝚆', 'X': '𝚇', 'Y': '𝚈', 'Z': '𝚉', 'a': '𝚊', 'b': '𝚋', 'c': '𝚌', 'd': '𝚍', 'e': '𝚎', 'f': '𝚠', 'g': '𝚐', 'h': '𝚑', 'i': '𝚒', 'j': '𝚓', 'k': '𝚔', 'l': '𝚕', 'm': '𝚖', 'n': '𝚗', 'o': '𝚘', 'p': '𝚙', 'q': '𝚚', 'r': '𝚛', 's': '𝚜', 't': '𝚝', 'u': '𝚞', 'v': '𝚟', 'w': '𝚠', 'x': '𝚡', 'y': '𝚢', 'z': '𝚣' }
         };
 
-        fungsi convertText(teks, mapType) {
-            misalkan res = '';
-            jika (mapType === 'flip') {
-                untuk (misalkan i = panjang teks - 1; i >= 0; i--) {
-                    res += alphabetMaps[mapType][text[i]] || text[i];
+        function konversiTeks(teks, jenisPeta) {
+            let hasil = '';
+            const peta = PetaAlfabet[jenisPeta];
+            if (jenisPeta === 'membalik') {
+                for (let i = teks.length - 1; i >= 0; i--) {
+                    hasil += PetaAlfabet['sultan'][teks[i]] || teks[i];
                 }
-            } kalau tidak {
-                untuk (misalkan i=0; i<text.length; i++) {
-                    res += alphabetMaps[mapType][text[i]] || text[i];
-                }
+                return hasil;
             }
-            kembalikan res;
+            for (let i = 0; i < teks.length; i++) {
+                const karakter = teks[i];
+                hasil += (peta && peta[karakter]) ? peta[karakter] : karakter;
+            }
+            return hasil;
         }
 
-        fungsi renderStyles(rawText) {
+        function renderGaya(teksMentah) {
             fontList.innerHTML = '';
-            const safeText = teks mentah.trim() || "Nama";
+            const teksAman = teksMentah.trim() || "Nama";
 
-            pratinjauBefore.innerText = rawText.trim() || "...";
+            pratinjauSebelumnya.textContent = teksMentah.trim() || "...";
 
-            const txtJapan = convertText(safeText, 'japan');
-            const txtBubble = convertText(safeText, 'bubble');
-            const txtSultan = convertText(safeText, 'sultan');
-            const txtGothic = convertText(safeText, 'gothic');
-            const txtCursive = convertText(safeText, 'kursif');
-            const txtFlip = convertText(safeText, 'flip');
-            const txtBoldItalic = convertText(safeText, 'bolditalic');
-            const txtMono = convertText(safeText, 'mono');
+            const txtJepang = konversiTeks(teksAman, 'jepang');
+            const txtGelembung = konversiTeks(teksAman, 'gelembung');
+            const txtSultan = konversiTeks(teksAman, 'sultan');
+            const txtGoth = konversiTeks(teksAman, 'goth');
+            const txtItalic = konversiTeks(teksAman, 'italicbold');
+            const txtFlip = konversiTeks(teksAman, 'membalik');
+            const txtMono = konversiTeks(teksAman, 'mono');
 
-            const customStyles = [
-                { name: "Simbol Payung Jepang ☂️ (Paling Dicari)", format: `乂 ${txtJapan} ☂️`, isViral: true },
-                { name: "Sultan Kerajaan Klasik Gothic 𝔖𝔱𝔶𝔩𝔢", format: `☠︎ ${txtGothic} ☠︎`, isViral: true },
-                { name: "Aesthetic Cursive Tulis Tangan ℒℴ𝓋ℯ", format: `☁️ ${txtCursive} ☁️`, isViral: true },
-                { name: "Gaya Teks Terbalik Unik (Anti Mainstream)", format: `(╯°□°）╯ ${txtFlip}`, isViral: true },
-                { name: "Model Sultan Premium Simbol ☬", format: `꧁ঔৣ☬ ${txtSultan} ☬ঔৣ꧂`, isViral: false },
-                { name: "Serif Tebal Miring Elegan 𝑩𝒐𝒍𝒅", format: `【 ${txtBoldItalic} 】`, isViral: false },
-                { name: "Gaya Developer / Monospace Modern", format: `⎔ ⟨${txtMono}⟩ ⎔`, isViral: false },
-                { name: "Bingkai Minimalis Jepang 〖〗", format: `〖 ${txtJapan} 〗`, isViral: false },
-                { name: "Teks Bulat Tebal Hitam", format: `🅅🄽 【${txtBubble}】`, isViral: false },
-                { name: "Format Spasi Estetik Jepang ツ", format: `${safeText} ㅤツ`, isViral: false }
+            const GayaKustom = [
+                { nama: "Simbol Payung Jepang ☂️ (Paling Dicari)", format: `乂 ${txtJepang} ☂️`, isViral: true },
+                { nama: "Sultan Kerajaan Klasik Gotik 𓋹", format: `𓋹 ${txtGoth} 𓋹`, isViral: true },
+                { nama: "Tulisan Tangan Kursif Estetik 𝒱𝒾𝓅", format: `𝒱𝒾𝓅 𓆩 ${txtItalic} 𓆪`, isViral: true },
+                { nama: "Gaya Teks Terbalik Unik (Anti Mainstream)", format: `(ʇxǝʇ) 𓆩 ${txtFlip} 𓆪`, isViral: true },
+                { nama: "Model Sultan Premium Simbol 🔱", format: `🔱 𓊈 ${txtSultan} 𓊉 🔱`, isViral: false },
+                { nama: "Serif Tebal Miring Elegan Bold", format: `【 ${txtItalic} 】`, isViral: false },
+                { nama: "Gaya Developer / Monospace Modern", format: `⎔ ⟨ ${txtMono} ⟩ ⎔`, isViral: false },
+                { nama: "Bingkai Minimalis Jepang 𓉡", format: `〖 ${txtJepang} 〗`, isViral: false },
+                { nama: "Teks Bulat Tebal Hitam", format: `🅅🄸🄿 【 ${txtGelembung} 】`, isViral: false },
+                { nama: "Format Spasi Estetik Jepang ツ", format: `${teksAman}   ツ`, isViral: false }
             ];
 
-            previewAfter.innerText = customStyles[0].format;
+            pratinjauSetelahnya.textContent = GayaKustom[0].format;
 
-            customStyles.forEach((style, index) => {
-                const card = document.createElement('div');
-                card.className = style.isViral ? 'font-card viral-tag' : 'font-card';
-                card.innerHTML = `
+            GayaKustom.forEach((gaya, indeks) => {
+                const kartu = document.createElement('div');
+                kartu.className = gaya.isViral ? "kartu-font font-card viral-tag" : "kartu-font";
+                
+                // Menggunakan backtick ` utuh untuk innerHTML tanpa kebocoran kode
+                kartu.innerHTML = `
                     <div class="font-info">
-                        <span class="font-label">${style.name}</span>
-                        <span class="font-output">${style.format}</span>
+                        <span class="font-label">${gaya.nama}</span>
+                        <span class="font-output">${gaya.format}</span>
                     </div>
-                    <button class="btn-copy" onclick="doCopy('${style.format}')">Salin</button>
+                    <button class="btn-copy" onclick="doCopy('${gaya.format.replace(/'/g, "\\'")}')">Salin</button>
                 `;
-                fontList.appendChild(card);
-
-                // REKLAME IKLAN BARU: INLINE ADS BANNER (Diselipkan di tengah daftar font hasil generatif)
-                if (index === 6) { 
-                    const inlineAd = document.createElement('div');
-                    inlineAd.className = 'ad-banner-inline';
-                    inlineAd.innerHTML = '[ PLACE ADS - INLINE NATIVE BANNER LIST ]';
-                    fontList.appendChild(inlineAd);
-                }
+                fontList.appendChild(kartu);
             });
 
-            const webUrl = window.location.href;
-            shareWA.href = `https://api.whatsapp.com/send?text=` + encodeURIComponent(`Keren parah! Teks bio sosmed atau nama akunmu bisa langsung berubah jadi estetik dalam 1 detik tanpa aplikasi. Coba gratis di sini: ` + webUrl);
+            // Update Link Berbagi WhatsApp secara dinamis
+            const urlWeb = window.location.href;
+            shareWA.href = `https://api.whatsapp.com/send?text=*Sangat parah! Teks bio sosmed atau nick game kamu belum estetik?* 🤔 Yuk ubah nama kamu jadi keren dalam 1 detik di sini: ${encodeURIComponent(urlWeb)}`;
         }
 
-        function doCopy(textToCopy) {
-            hiddenClipboard.value = textToCopy;
+        function doCopy(teksUntukDisalin) {
+            hiddenClipboard.value = teksUntukDisalin;
             hiddenClipboard.select();
             hiddenClipboard.setSelectionRange(0, 99999);
             document.execCommand("copy");
 
-            toast.style.display = 'block';
-            setTimeout(() => { toast.style.display = 'none'; }, 2000);
+            // Munculkan toast notifikasi sukses
+            toast.classList.add('tampilkan');
+            setTimeout(() => {
+                toast.classList.remove('tampilkan');
+            }, 2000);
         }
 
-        inputText.addEventListener('input', (e) => renderStyles(e.target.value));
-        renderStyles("");
+        // Jalankan generator otomatis saat mengetik
+        teksMasukan.addEventListener('input', (e) => renderGaya(e.target.value));
+        
+        // Render pertama kali saat halaman dibuka kosong
+        renderGaya('');
     </script>
 </body>
 </html>
